@@ -1,0 +1,32 @@
+<%= form_with(model: capture, local: true) do |form| %>
+  <% if capture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(capture.errors.count, "error") %> prohibited this capture from being saved:</h2>
+
+      <ul>
+      <% capture.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :capture_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :imgurl %>
+    <%= form.text_field :imgurl, id: :capture_imgurl %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url_id %>
+    <%= form.text_field :url_id, id: :capture_url_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

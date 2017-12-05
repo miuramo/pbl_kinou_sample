@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @url.name %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @url.url %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @url.user %>
+</p>
+
+<% @url.captures.each do |c| %>
+<%= image_tag c.imgurl , width: 300 %>
+<% end %>
+
+<%= link_to 'Edit', edit_url_path(@url) %> |
+<%= link_to 'Back', urls_path %>

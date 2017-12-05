@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @capture.name %>
+</p>
+
+<p>
+  <strong>Imgurl:</strong>
+  <%= @capture.imgurl %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @capture.url %>
+</p>
+
+<%= link_to 'Edit', edit_capture_path(@capture) %> |
+<%= link_to 'Back', captures_path %>
