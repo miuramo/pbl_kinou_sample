@@ -1,9 +1,12 @@
 class Url < ApplicationRecord
     belongs_to :user
-    has_many :captures
+    has_many :captures, :dependent => :destroy
 
     def first
         return self.captures.first
+    end
+    def last
+        return self.captures.last
     end
 
     def capture

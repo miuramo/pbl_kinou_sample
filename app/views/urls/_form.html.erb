@@ -1,4 +1,4 @@
-<%= form_with(model: url, local: true) do |form| %>
+<%= form_with(url: user_urls_path, model: url, local: true) do |form| %>
   <% if url.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(url.errors.count, "error") %> prohibited this url from being saved:</h2>
@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :url_user_id %>
+    <%= form.text_field :user_id, id: :url_user_id , value: @user.id %>
   </div>
 
   <div class="actions">

@@ -22,6 +22,8 @@ class UsersController < ApplicationController
       @urls.each do |u|
           u.capture
       end
+      flash[:notice] = 'Captured your URLs'
+      redirect_to controller: 'users', action: 'show', id: @user.id
 
   end
 

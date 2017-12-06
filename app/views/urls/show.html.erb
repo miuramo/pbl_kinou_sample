@@ -12,12 +12,12 @@
 
 <p>
   <strong>User:</strong>
-  <%= @url.user %>
+  <%= @url.user.name %>
 </p>
 
 <% @url.captures.each do |c| %>
 <%= image_tag c.imgurl , width: 300 %>
 <% end %>
 
-<%= link_to 'Edit', edit_url_path(@url) %> |
-<%= link_to 'Back', urls_path %>
+<%= link_to 'Edit', edit_user_url_path(@url) %> |
+<%= link_to 'Back', user_urls_path %>

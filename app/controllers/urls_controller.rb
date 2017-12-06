@@ -17,20 +17,24 @@ class UrlsController < ApplicationController
   # GET /urls/new
   def new
     @url = Url.new
+    @user = User.find(params[:user_id])
   end
 
   # GET /urls/1/edit
   def edit
+    @user = User.find(params[:user_id])
   end
 
   # POST /urls
   # POST /urls.json
   def create
+    @user = User.find(params[:user_id])
     @url = Url.new(url_params)
 
     respond_to do |format|
       if @url.save
-        format.html { redirect_to @url, notice: 'Url was successfully created.' }
+        @url.capture
+        format.html { redirect_to user_urls_url(@user), notice: 'Url was successfully created.' }
         format.json { render :show, status: :created, location: @url }
       else
         format.html { render :new }
@@ -42,9 +46,11 @@ class UrlsController < ApplicationController
   # PATCH/PUT /urls/1
   # PATCH/PUT /urls/1.json
   def update
+    @user = User.find(params[:user_id])
+
     respond_to do |format|
       if @url.update(url_params)
-        format.html { redirect_to @url, notice: 'Url was successfully updated.' }
+        format.html { redirect_to user_urls_url(@user), notice: 'Url was successfully updated.' }
         format.json { render :show, status: :ok, location: @url }
       else
         format.html { render :edit }
@@ -56,9 +62,13 @@ class UrlsController < ApplicationController
   # DELETE /urls/1
   # DELETE /urls/1.json
   def destroy
+    @user = User.find(params[:user_id])
+    @url = Url.find(params[:id])
+    puts @url.id
+
     @url.destroy
     respond_to do |format|
-      format.html { redirect_to urls_url, notice: 'Url was successfully destroyed.' }
+      format.html { redirect_to user_urls_url(@user), notice: 'Url was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

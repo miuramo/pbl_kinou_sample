@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'All User' , users_path %>
+<%= link_to 'Update Capture for '+@user.name , @user.id.to_s + '/captall' %>
+<%= link_to 'Add/Edit URL' , user_urls_path(@user) %>
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
@@ -16,7 +19,10 @@
 </p>
 
 <% @urls.each do |u| %>
-<%= image_tag u.first.imgurl , width: 300 %>
+<div>
+<%= image_tag u.last.imgurl , width: 300 %>
+<%= u.last.created_at %>
+</div>
 <% end %>
 
 
